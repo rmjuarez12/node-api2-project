@@ -16,8 +16,8 @@ Use `Node.js` and `Express` to build an API that performs _CRUD_ operations on `
 
 ### Task 2: Minimum Viable Product
 
-- Add the code necessary to implement the endpoints listed below.
-- Separate the endpoints that begin with `/api/posts` into a separate `Express Router`.
+- [x] Add the code necessary to implement the endpoints listed below.
+- [x] Separate the endpoints that begin with `/api/posts` into a separate `Express Router`.
 
 #### Endpoints
 
@@ -32,6 +32,14 @@ Configure the API to handle to the following routes:
 | GET    | /api/posts/:id/comments | Returns an array of all the comment objects associated with the post with the specified id.                                                                                 |
 | DELETE | /api/posts/:id          | Removes the post with the specified id and returns the **deleted post object**. You may need to make additional calls to the database in order to satisfy this requirement. |
 | PUT    | /api/posts/:id          | Updates the post with the specified `id` using data from the `request body`. Returns the modified document, **NOT the original**.                                           |
+
+- [ ] POST - /api/posts
+- [ ] POST - /api/posts/:id/comments
+- [x] GET - /api/posts
+- [ ] GET - /api/posts/:id
+- [ ] GET - /api/posts/:id/comments
+- [ ] DELETE - /api/posts/:id
+- [ ] PUT - /api/posts/:id
 
 #### Endpoint Specifications
 
