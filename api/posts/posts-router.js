@@ -52,6 +52,7 @@ router.get("/", (req, res) => {
 // GET - Post by ID
 router.get("/:id", (req, res) => {
   const { id } = req.params;
+
   DB.findById(id)
     .then((post) => {
       if (post[0] === undefined) {
@@ -60,6 +61,33 @@ router.get("/:id", (req, res) => {
           .json({ message: "The post with the specified ID does not exist." });
       } else {
         res.status(200).json(post);
+      }
+    })
+    .catch((err) => {
+      res
+        .status(500)
+        .json({ error: "The post information could not be retrieved." });
+    });
+});
+
+// DELETE - Delete a post by ID
+router.delete("/:id", (req, res) => {
+  const { id } = req.params;
+
+  DB.findById(id)
+    .then((post) => {
+      if (post[0] === undefined) {
+        res
+          .status(404)
+          .json({ message: "The post with the specified ID does not exist." });
+      } else {
+        DB.remove(id)
+          .then((post) => {
+            res.status(200).json({ message: "Post has been deleted" });
+          })
+          .catch(() => {
+            res.status(500).json({ error: "The post could not be removed" });
+          });
       }
     })
     .catch((err) => {

@@ -38,7 +38,7 @@ Configure the API to handle to the following routes:
 - [x] GET - /api/posts
 - [x] GET - /api/posts/:id
 - [x] GET - /api/posts/:id/comments
-- [ ] DELETE - /api/posts/:id
+- [x] DELETE - /api/posts/:id
 - [ ] PUT - /api/posts/:id
 
 #### Endpoint Specifications
@@ -124,12 +124,13 @@ When the client makes a `GET` request to `/api/posts/:id/comments`:
 
 When the client makes a `DELETE` request to `/api/posts/:id`:
 
-- If the _post_ with the specified `id` is not found:
+- [x] If the _post_ with the specified `id` is not found:
 
   - return HTTP status code `404` (Not Found).
   - return the following JSON object: `{ message: "The post with the specified ID does not exist." }`.
 
-- If there's an error in removing the _post_ from the database:
+- [x] If there's an error in removing the _post_ from the database:
+
   - cancel the request.
   - respond with HTTP status code `500`.
   - return the following JSON object: `{ error: "The post could not be removed" }`.
