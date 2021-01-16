@@ -1,5 +1,6 @@
 //* Import express and setup router
 const express = require("express");
+const { route } = require("../comments/comments-router");
 const router = express.Router();
 
 //* Import the DB helper
@@ -87,6 +88,49 @@ router.delete("/:id", (req, res) => {
           })
           .catch(() => {
             res.status(500).json({ error: "The post could not be removed" });
+          });
+      }
+    })
+    .catch((err) => {
+      res
+        .status(500)
+        .json({ error: "The post information could not be retrieved." });
+    });
+});
+
+// PUT - Edit a post
+router.put("/:id", (req, res) => {
+  const { id } = req.params;
+
+  const newPostData = req.body;
+
+  DB.findById(id)
+    .then((post) => {
+      if (post[0] === undefined) {
+        res
+          .status(404)
+          .json({ message: "The post with the specified ID does not exist." });
+      } else {
+        if (
+          newPostData.title === undefined ||
+          newPostData.title === "" ||
+          newPostData.contents === undefined ||
+          newPostData.contents === ""
+        ) {
+          res.status(400).json({
+            errorMessage: "Please provide title and contents for the post.",
+          });
+          return;
+        }
+
+        DB.update(id, newPostData)
+          .then(() => {
+            res.status(200).json({ ...post[0], ...newPostData });
+          })
+          .catch(() => {
+            res
+              .status(500)
+              .json({ error: "The post information could not be modified." });
           });
       }
     })
