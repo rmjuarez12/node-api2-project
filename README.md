@@ -222,4 +222,4 @@ Create a new React application and connect it to your server:
 
 Follow these steps for completing your project.
 
-- [ ] Submit a pull request to merge `<firstName-lastName>` Branch into main (student's Repo). **Please don't merge your own pull request**
+- [x] Submit a pull request to merge `<firstName-lastName>` Branch into main (student's Repo). **Please don't merge your own pull request**
