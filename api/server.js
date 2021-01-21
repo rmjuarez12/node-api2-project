@@ -1,0 +1,21 @@
+//* Import Express and setup server
+const express = require("express");
+const server = express();
+
+//* Import the routers
+const Post = require("./posts/posts-router");
+const Comments = require("./comments/comments-router");
+
+//* Ensure it parses the JSON
+server.use(express.json());
+
+// Import and setup CORS
+const cors = require("cors");
+server.use(cors());
+
+//* Setup the routers
+server.use("/api/posts", Post);
+server.use("/api/posts", Comments);
+
+//* Export modules
+module.exports = server;
